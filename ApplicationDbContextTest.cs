@@ -32,7 +32,7 @@
                 DueDate = DateTime.Now
             };
 
-            _context.Tasks.Add(taskItem);
+            _context.TaskItems.Add(taskItem);
             _context.SaveChanges();
 
             Assert.True(taskItem.Id > 0);
@@ -49,10 +49,10 @@
                 DueDate = DateTime.Now
             };
 
-            _context.Tasks.Add(taskItem);
+            _context.TaskItems.Add(taskItem);
             _context.SaveChanges();
 
-            var taskFromDb = _context.Tasks.Find(taskItem.Id);
+            var taskFromDb = _context.TaskItems.Find(taskItem.Id);
 
             Assert.NotNull(taskFromDb);
             Assert.Equal(taskItem.Title, taskFromDb.Title);
