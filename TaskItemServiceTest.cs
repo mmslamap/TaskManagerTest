@@ -131,6 +131,12 @@ namespace TaskManagerTest
         [Fact]
         public async Task DeleteTaskItem_Valid_ReturnsTrueAsync()
         {
+            var taskItem = new TaskItem
+            {
+                Id = 1
+            };
+
+            _taskItemRepository.Setup(x => x.GetTaskItemByIdAsync(taskItem.Id)).ReturnsAsync(taskItem);
             _taskItemRepository.Setup(x => x.DeleteTaskItemAsync(1)).Returns(Task.CompletedTask);
 
             var result = await _taskItemService.DeleteTaskItemAsync(1);
